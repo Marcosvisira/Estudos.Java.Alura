@@ -1,0 +1,103 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int numConta;
+        double saldo = 2000, transferencia = 0, deposito = 0, valDesejado = 0,
+                valTransferido = 0;
+        String dataDeNascimento, cpf;
+
+
+        String introducao;
+        introducao = """
+                ****************************************************
+                	               
+                       *** Bem vindo ao Banco Global. ***
+                       
+                ****************************************************
+                             Deseja abir uma conta?
+                             
+                Precione 1 para a abertura ou 0 para fechar o cadastro.
+                   
+                """;
+
+
+        System.out.println(introducao);
+        String boasVindas;
+        boasVindas = """
+                *******************************************************************
+                        
+                    *Obrigado por escolher o nosso Banco, ficamos muito gratos!*
+                        
+                 Para dar andamento na abertura de sua conta, digite as informações
+                                           Necessárias:
+                                                                               
+                *******************************************************************
+                """;
+        String despedida;
+        despedida = """
+                *******************************************************************
+                	       
+                 *Obrigado pela visita, caso mude de ideia, estaremos disponíveis!*
+                 
+                *******************************************************************
+                """;
+
+        int inicializacao = sc.nextInt();
+        if (inicializacao == 1) {
+            System.out.println(boasVindas);
+        } else if (inicializacao == 0) {
+            System.out.println(despedida);
+            return;
+        }
+
+        sc.nextLine();
+        System.out.println("Digite o seu nome completo: ");
+        String nome = sc.nextLine();
+        System.out.println("Digite o seu CPF: ");
+        cpf = sc.next();
+        System.out.println("Digite sua data de nascimento: ");
+        dataDeNascimento = sc.next();
+
+        System.out.println("*******************************************************************");
+        System.out.println("*Dados iniciais do cliente:* ");
+        System.out.println("Nome do Cliente: " + nome);
+        System.out.println("CPF do Cliente: " + cpf);
+        System.out.println("Data de nascimento: " + dataDeNascimento);
+        System.out.println("*******************************************************************");
+
+        System.out.println("Digite a operação desejada:");
+        String selecOperacao;
+        selecOperacao = """
+                1 - Consultar Saldo.
+                2 - Receber valor.
+                3 - Transferir valor.
+                4 - Sair.
+                """;
+        int operacao = 0;
+        while (operacao != 4) {
+            System.out.println(selecOperacao);
+            operacao = sc.nextInt();
+
+            if (operacao == 1) {
+                System.out.println("Seu saldo atual é R$: " + saldo);
+
+            } else if (operacao == 2) {
+                System.out.println("Digite o valor desejado:");
+                valDesejado = sc.nextDouble();
+                System.out.println("O saldo atual é de: " + (saldo + valDesejado));
+
+            } else if (operacao == 3) {
+                System.out.println("Digite o valor a ser transferido: ");
+                valTransferido = sc.nextDouble();
+                System.out.println("Seu saldo atual é de: " + (saldo - valTransferido));
+            } else if (operacao == 4) {
+                System.out.println("Estamos encerrando a aplicação, obrigado!");
+
+            }
+        }
+    }
+}
+
